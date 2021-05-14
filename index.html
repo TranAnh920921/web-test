@@ -7,8 +7,8 @@
     <title>Torano</title>
     <link rel="stylesheet" href="./public/font/fontawesome-free-5.15.1-web/css/all.min.css">
     <link rel="stylesheet" href="./public/themify-icons/themify-icons.css">
-    <link rel="stylesheet" href="./public/css/index.css">
     <link rel="stylesheet" href="./public/css/main.css">
+    <link rel="stylesheet" href="./public/css/index.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -40,9 +40,8 @@
               </div>
         </div>
         <header class="header">
-            
             <div class="container-fluid header_topbar">
-                <ul class="header_topbar_list">
+                <ul class="header_topbar_list header_topbar_list_left">
                     <li class="header_topbar_item">
                         <i class="fa fa-phone header_topbar-icon" aria-hidden="true"></i>
                         <span class="header_topbar_item_phone">
@@ -53,10 +52,13 @@
                 <ul class="header_topbar_list header_topbar_list_right">
                     <li class="header_topbar_item"  title="Tìm kiếm">
                         <!-- <i class="fa fa-search header_topbar-icon" aria-hidden="true"></i> -->
-                        <span class="ti-search header_topbar-icon"></span>
+                        <label for="input_checkbox_search">
+                            <span class="ti-search header_topbar-icon"></span>
+                        </label>
+                        
                     </li>
                     <li class="header_topbar_item header_topbar_item_cart" title="Giỏ hàng">
-                        <label for="input_checkbox__cart">
+                        <label for="input_checkbox__cart"   onclick="checkedCart()">
                             <i class="fa fa-shopping-cart header_topbar-icon " aria-hidden="true"></i>
                             <span class="header_topbar_item_cart_number">3</span>
                         </label>
@@ -75,7 +77,7 @@
                         <div class="header_topbar_user_menu">
                             <ul class="header_topbar_user_list">
                                 <li class="header_topbar_user_item">
-                                    <span style="color: #26a998;">Xin chào: </span><span style="color: red;">Nguyễn Sỹ Khải</span>
+                                    <span style="color: #26a998;">Xin chào: </span><span style="color: red;">Khải</span>
                                 </li>
                                 <li class="header_topbar_user_item">
                                     <a href="">Thông tin tài khoản</a>
@@ -96,82 +98,179 @@
 
                 <ul class="header_navbar_list">
                     <li class="header_navbar_item">
-                        <a href="#">Trang chủ</a>
+                        <a href="#" class="header_navbar_item_kw">Trang chủ</a>
                     </li>
                     <li class="header_navbar_item header_navbar_item_product">
-                        <span>Sản phẩm</span>
+                        <span class="header_navbar_item_kw">Sản phẩm</span>
                         <!-- Hover Sản Phẩm -->
-                        <div class="header_navbar_item_product_model" id="item_product">
+                        <div class="header_navbar_item_product_modal" id="item_product">
                             <div class="header_navbar_item_product_list">
                                 <ul class="header_navbar_item_product_list_ul">
-                                    <li class="header_navbar_item_product_list_ul_key">ÁO</li>
-                                    <li>Áo sơ mi</li>
-                                    <li>Áo polo</li>
-                                    <li>Áo len</li>
-                                    <li>Áo T-Shirt</li>
-                                    <li>Áo khoác</li>
-                                    <li>Áo thun dài tay</li>
+                                    <li class="header_navbar_item_product_list_ul_key"><a href="">ÁO</a></li>
+                                    <li><a href="">Áo sơ mi</a></li>
+                                    <li><a href="">Áo polo</a></li>
+                                    <li><a href="">Áo len</a></li>
+                                    <li><a href="">Áo T-Shirt</a></li>
+                                    <li><a href="">Áo khoác</a></li>
+                                    <li><a href="">Áo thun dài tay</a></li>
                                 </ul>
                                 <ul class="header_navbar_item_product_list_ul">
-                                    <li class="header_navbar_item_product_list_ul_key">Quần</li>
-                                    <li>Quần âu</li>
-                                    <li>Quần kaki</li>
-                                    <li>Quần thể thao</li>
-                                    <li>Quần jeans</li>
-                                    <li>Quần Short</li>
+                                    <li class="header_navbar_item_product_list_ul_key"><a href="">Quần</a></li>
+                                    <li><a href="">Quần âu</a></li>
+                                    <li><a href="">Quần kaki</a></li>
+                                    <li><a href="">Quần thể thao</a></li>
+                                    <li><a href="">Quần jeans</a></li>
+                                    <li><a href="">Quần Short</a></li>
                                 </ul>
                                 <ul class="header_navbar_item_product_list_ul">
-                                    <li class="header_navbar_item_product_list_ul_key">Đồ lót</li>
-                                    <li>Boxer</li>
-                                    <li>Brief</li>
+                                    <li class="header_navbar_item_product_list_ul_key"><a href="">Đồ lót</a></li>
+                                    <li><a href="">Boxer</a></li>
+                                    <li><a href="">Brief</a></li>
                                 </ul>
                                 <ul class="header_navbar_item_product_list_ul">
-                                    <li class="header_navbar_item_product_list_ul_key">Phụ kiện</li>
-                                    <li>Thắt lưng</li>
-                                    <li>Ví nam</li>
-                                    <li>Cà vạt</li>
-                                    <li>Cặp da</li>
-                                    <li>Giày da</li>
-                                    <li>Vali</li>
+                                    <li class="header_navbar_item_product_list_ul_key"><a href="">Phụ kiện</a></li>
+                                    <li><a href="">Thắt lưng</a></li>
+                                    <li><a href="">Ví nam</a></li>
+                                    <li><a href="">Cà vạt</a></li>
+                                    <li><a href="">Cặp da</a></li>
+                                    <li><a href="">Giày da</a></li>
+                                    <li><a href="">Vali</a></li>
                                 </ul>
                                 <ul class="header_navbar_item_product_list_ul">
-                                    <li class="header_navbar_item_product_list_ul_key">Kidman</li>
-                                    <li>Áo sơ mi</li>
-                                    <li>Áo polo</li>
-                                    <li>Áo len</li>
-                                    <li>Áo T-Shirt</li>
-                                    <li>Áo khoác</li>
-                                    <li>Áo thun dài tay</li>
+                                    <li class="header_navbar_item_product_list_ul_key"><a href="">Kidman</a></li>
+                                    <li><a href="">Áo sơ mi</a></li>
+                                    <li><a href="">Áo polo</a></li>
+                                    <li><a href="">Áo len</a></li>
+                                    <li><a href="">Áo T-Shirt</a></li>
+                                    <li><a href="">Áo khoác</a></li>
+                                    <li><a href="">Áo thun dài tay</a></li>
                                 </ul>
                             </div>
                             
                         </div>
                     </li>
                     <li class="header_navbar_item">
-                        <span>Bộ sưu tập</span>
+                        <span class="header_navbar_item_kw">Bộ sưu tập</span>
                     </li>
                     <li class="header_navbar_item header_navbar_item_logo">
-                        <img src="./public/images/logo-typo.png" alt="">
+                        <a href=""><img src="./public/images/logo-typo.png" alt=""></a>
                     </li>
                     <li class="header_navbar_item">
-                        <span>Tin tức</span>
+                        <a href="" class="header_navbar_item_kw"><span>Tin tức</span></a>
                     </li>
                     <li class="header_navbar_item">
-                        <span>Đồng phục</span>
+                        <span class="header_navbar_item_kw">Đồng phục</span>
                     </li>
                     <li class="header_navbar_item">
-                        <a href="">Liên hệ</a>
+                        <a href="" class="header_navbar_item_kw"><span>Liên hệ</span></a>
                     </li>
                 </ul>
             </div>
+            <div class="header_hidden"></div>
             <div class="abc" id="abc" style="color: white;z-index: 1;"></div>
+            
+            <!-- Search sản phẩm-->
             
         </header>
         <!-- END HEADER -->
 
         <!-- CONTAINER -->
 
-
+        <div class="container-fluid app_container">
+            <div class="app_container_title">
+                <a href="" class="app_container_title_link">SẢN PHẦM MỚI</a>
+            </div>
+            <div class="app_container_heading">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+                        <div class="product_item" id="product_item_1" onmouseover="Hoverevent(this.id)" onmouseout="Outevent(this.id)">
+                            <div class="product_item_top">
+                                <a href=""><img src="./public/images/product/avatar_b/p1.jpg" alt=""></a>
+                                <a href="" class="product_item_name">Áo polo coolmax Germany TP065</a>
+                                <span class="product_item_price">380,000 <span class="price_d">đ</span></span>
+                            </div>
+                            <div class="product_item_bot" id="product_item_bot_1">
+                                <div class="product_item_bot_l">
+                                    <a href="#" class="product_item_bot_link"><span class="ti-shopping-cart"></span>  <span>Mua nhanh</span></a>
+                                </div>
+                                <div class="product_item_bot_r">
+                                    <a href="" class="product_item_bot_link"><span class="ti-eye"></span>  <span>Xem chi tiết</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+                        <div class="product_item" id="product_item_2" onmouseover="Hoverevent(this.id)" onmouseout="Outevent(this.id)">
+                            <div class="product_item_top">
+                                <a href=""><img src="./public/images/product/avatar_b/p1.jpg" alt=""></a>
+                                <a href="" class="product_item_name">Áo polo coolmax Germany TP065</a>
+                                <span class="product_item_price">380,000 <span class="price_d">đ</span></span>
+                            </div>
+                            <div class="product_item_bot" id="product_item_bot_2">
+                                <div class="product_item_bot_l">
+                                    <a href="" class="product_item_bot_link"><span class="ti-shopping-cart"></span>  <span>Mua nhanh</span></a>
+                                </div>
+                                <div class="product_item_bot_r">
+                                    <a href="" class="product_item_bot_link"><span class="ti-eye"></span>  <span>Xem chi tiết</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+                        <div class="product_item"  id="product_item_3" onmouseover="Hoverevent(this.id)" onmouseout="Outevent(this.id)">
+                            <div class="product_item_top">
+                                <a href=""><img src="./public/images/product/avatar_b/p1.jpg" alt=""></a>
+                                <a href="" class="product_item_name">Áo polo coolmax Germany TP065</a>
+                                <span class="product_item_price">380,000 <span class="price_d">đ</span></span>
+                            </div>
+                            <div class="product_item_bot" id="product_item_bot_3">
+                                <div class="product_item_bot_l">
+                                    <a href="" class="product_item_bot_link"><span class="ti-shopping-cart"></span>  <span>Mua nhanh</span></a>
+                                </div>
+                                <div class="product_item_bot_r">
+                                    <a href="" class="product_item_bot_link"><span class="ti-eye"></span>  <span>Xem chi tiết</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6">
+                        <div class="product_item"  id="product_item_4" onmouseover="Hoverevent(this.id)" onmouseout="Outevent(this.id)">
+                            <div class="product_item_top">
+                                <a href=""><img src="./public/images/product/avatar_b/p1.jpg" alt=""></a>
+                                <a href="" class="product_item_name">Áo polo coolmax Germany TP065</a>
+                                <span class="product_item_price">380,000 <span class="price_d">đ</span></span>
+                            </div>
+                            <div class="product_item_bot" id="product_item_bot_4">
+                                <div class="product_item_bot_l">
+                                    <a href="" class="product_item_bot_link"><span class="ti-shopping-cart"></span>  <span>Mua nhanh</span></a>
+                                </div>
+                                <div class="product_item_bot_r">
+                                    <a href="" class="product_item_bot_link"><span class="ti-eye"></span>  <span>Xem chi tiết</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prd_it col-xl-3 col-lg-3 col-md-4 col-sm-6 col-6" id="prd_it_5">
+                        <div class="product_item"  id="product_item_5" onmouseover="Hoverevent(this.id)" onmouseout="Outevent(this.id)">
+                            <div class="product_item_top" id="product_item_top_5">
+                                <a href=""><img src="./public/images/product/avatar_b/p1.jpg" alt=""></a>
+                                <a href="" class="product_item_name">Áo polo coolmax Germany TP065</a>
+                                <span class="product_item_price">380,000 <span class="price_d">đ</span></span>
+                            </div>
+                            <div class="product_item_bot" id="product_item_bot_5">
+                                <div class="product_item_bot_l">
+                                    <a href="" class="product_item_bot_link"><span class="ti-shopping-cart"></span>  <span>Mua nhanh</span></a>
+                                </div>
+                                <div class="product_item_bot_r">
+                                    <a href="" class="product_item_bot_link"><span class="ti-eye"></span>  <span>Xem chi tiết</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
 
         <!-- END CONTAINER -->
 
@@ -180,17 +279,17 @@
 
         </footer>
         <!-- END FOOTER -->
-        <!-- Model Cart -->
-        <div class="app_model_cart" >
-            <!-- <div class="app_model_over"></div> -->
+        <!-- modal Cart -->
+        <div class="app_modal_cart" >
+            <!-- <div class="app_modal_over"></div> -->
             <input type="checkbox" name="" class="checkbox__cart" id="input_checkbox__cart" style="display: none;">
-            <label for="input_checkbox__cart" class="app_model_over" id="app_model_over"></label>
+            <label for="input_checkbox__cart" class="app_modal_over" id="app_modal_over"   onclick="checkedCart()"></label>
             
             <div class="shopping_cart">
                 <div class="shopping_cart_top">
                     <div class="">GIỎ HÀNG</div>
                     <div>
-                        <label for="input_checkbox__cart" class="ti-close shopping_cart_top_icon"></label>
+                        <label for="input_checkbox__cart" class="ti-close shopping_cart_top_icon"  onclick="checkedCart()"></label>
                     </div>
                 </div>
                 <span class="">Bạn đang  có <span style="font-weight: 800;font-family: 'Quicksand',sans-serif;font-size: 1.6rem;">0</span> sản phẩm trong giỏ hàng</span>
@@ -201,6 +300,45 @@
                     <span>Hiện chưa có sản phẩm trong giỏ hàng.</span> -->
 
                     <!-- Nếu có sản phẩm trong giỏ hàng -->
+                    <hr style="margin-top: 20px;margin-bottom: 20px;">
+                    <div class="shopping_cart_product_list">
+                        <div class="shopping_cart_product_list_img">
+                            <a href=""><img src="./public/images/product/product1.jpg" alt=""></a>
+                        </div>
+                        <div class="shopping_cart_product_list_content">
+                            <a href="">Áo thun in hình Capacabana TS 600 - Xanh Navy - XL</a>
+                            <div class="shopping_cart_product_list_price">
+                                <span>250,000</span> đ <span style="font-weight: 800;">x</span> 1
+                            </div>
+                            <a href="" class="shopping_cart_product_list_content_link">Xóa</a>
+                        </div>
+                    </div>
+                    <hr style="margin-top: 20px;margin-bottom: 20px;">
+                    <div class="shopping_cart_product_list">
+                        <div class="shopping_cart_product_list_img">
+                            <a href=""><img src="./public/images/product/product1.jpg" alt=""></a>
+                        </div>
+                        <div class="shopping_cart_product_list_content">
+                            <a href="">Áo thun in hình Capacabana TS 600 - Xanh Navy - XL</a>
+                            <div class="shopping_cart_product_list_price">
+                                <span>250,000</span> đ <span style="font-weight: 800;">x</span> 1
+                            </div>
+                            <a href="" class="shopping_cart_product_list_content_link">Xóa</a>
+                        </div>
+                    </div>
+                    <hr style="margin-top: 20px;margin-bottom: 20px;">
+                    <div class="shopping_cart_product_list">
+                        <div class="shopping_cart_product_list_img">
+                            <a href=""><img src="./public/images/product/product1.jpg" alt=""></a>
+                        </div>
+                        <div class="shopping_cart_product_list_content">
+                            <a href="">Áo thun in hình Capacabana TS 600 - Xanh Navy - XL</a>
+                            <div class="shopping_cart_product_list_price">
+                                <span>250,000</span> đ <span style="font-weight: 800;">x</span> 1
+                            </div>
+                            <a href="" class="shopping_cart_product_list_content_link">Xóa</a>
+                        </div>
+                    </div>
                     <hr style="margin-top: 20px;margin-bottom: 20px;">
                     <div class="shopping_cart_product_list">
                         <div class="shopping_cart_product_list_img">
@@ -241,6 +379,51 @@
                 </div>
             </div>
         </div>
+
+        <!-- modal search -->
+        <input type="checkbox" id="input_checkbox_search" class="input_checkbox_search" hidden>
+        <div class="app_modal_search">
+            <div class="app_modal_search_top">
+                <form action="" class="app_modal_search_content">
+                    <input type="text" class="app_modal_search_input">
+                    <div class="app_modal_search_search">
+                        <button type="submit" class="ti-search app_modal_search_search_btn"></button>
+                    </div>
+                </form>
+                <div class="app_modal_search_cl">
+                    <label for="input_checkbox_search" class="input_checkbox_search_close">
+                        <span class="ti-close"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <!-- Khi có sản phẩm -->
+            <div class="app_modal_search_product">
+                <div class="app_modal_search_product_list">
+                    <div class="app_modal_search_product_list_img">
+                        <a href=""><img src="./public/images/product/saerch.jpg" alt=""></a>
+                    </div>
+                    <div class="app_modal_search_product_list_content">
+                        <a href="" class="app_modal_search_product_list_content_name">Quần lót boxer kidman DBX008</a>
+                        <span class="app_modal_search_product_list_content_price">79,000</span>
+                    </div>
+                   
+                </div>
+                <hr>
+                <div class="app_modal_search_product_list">
+                    <div class="app_modal_search_product_list_img">
+                        <a href=""><img src="./public/images/product/saerch.jpg" alt=""></a>
+                    </div>
+                    <div class="app_modal_search_product_list_content">
+                        <a href="" class="app_modal_search_product_list_content_name">Quần lót boxer kidman DBX008</a>
+                        <span class="app_modal_search_product_list_content_price">79,000</span>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        
+
     </div>
 </body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
