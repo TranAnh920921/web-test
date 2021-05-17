@@ -6,15 +6,16 @@ $(".header_navbar_list").hover(function(){
 });
 
 // Check phần cart, nếu checkcart đã check thì khóa màn hình body
-function checkedCart(){
-    if(document.getElementById('input_checkbox__cart').checked ==true){
-        $(document.body).css('overflow','');
-    }else{
-        $('body').css('overflow', 'hidden');
-    }
-}
+// function checkedCart(){
+//     if(document.getElementById('input_checkbox__cart').checked ==true){
+//         $(document.body).css('overflow','');
+//     }else{
+//         $('body').css('overflow', 'hidden');
+//     }
+// }
 // Xét độ rộng màn hình để xử lý phần hover navbar sản phẩm 
 var widthAll = screen.width;
+var heightAll = screen.height;
 // console.log(widthAll);
 $('.header_navbar_item_product_modal').width(widthAll);
 var x = $(".header_navbar_item_product").offset().left;
@@ -58,18 +59,133 @@ $(".app_modal_search_input").on('input', function(e){
 // Hover vào sản phẩm thêm phần border,
 // Hover vào sản phẩm thêm phần xem/mua hàng
 function Hoverevent(id){
-    var idClass = id;
-    idClass1 = '#' + 'product_item_' + idClass.slice(-1);
-    idClass2 = '#' + 'product_item_bot_' + idClass.slice(-1);
-    $(idClass1).css('border', '1px solid whitesmoke');
+    var idDiv = '#' + id;
+    var dataId = $(idDiv).attr('data-id');
+    var dataName = $(idDiv).attr('data-name');
+    var dataNameBot = $(idDiv).attr('data-nameBot');
+    idClass1 = '#' + dataName + dataId;
+    idClass2 = '#' + dataNameBot + dataId;
+    $(idClass1).css('border', '1px solid red');
     $(idClass2).css({'visibility' : 'visible'});
 }
 function Outevent(id){
-// $(".product_item").css('border', '1px solid transparent');
-    // $('.product_item_bot').css({'visibility' : 'hidden'});
-    var idClass = id;
-    idClass1 = '#' + 'product_item_' + idClass.slice(-1);
-    idClass2 = '#' + 'product_item_bot_' + idClass.slice(-1);
-    $(idClass1).css('border', '1px solid transparent');
+    var idDiv = '#' + id;
+    var dataId = $(idDiv).attr('data-id');
+    var dataName = $(idDiv).attr('data-name');
+    var dataNameBot = $(idDiv).attr('data-nameBot');
+    idClass1 = '#' + dataName + dataId;
+    idClass2 = '#' + dataNameBot + dataId;
+    $(idClass1).css('border', '1px solid whitesmoke');
     $(idClass2).css({'visibility' : 'hidden'});
+}
+
+// Thêm hoặc xóa yêu thích
+function addFavourite(id){
+    var idDiv = '#' + id;
+    var dataId = $(idDiv).attr('data-id');
+    var dataNameNo = $(idDiv).attr('data-name-no');
+    var dataNameHave = $(idDiv).attr('data-name-have');
+    var idAdd = '#' + dataNameNo + dataId;
+    var idRemove = '#' + dataNameHave + dataId;
+    $(idAdd).addClass('hidden_heart');
+    $(idRemove).removeClass('hidden_heart');
+}
+function removeFavourite(id){
+    var idDiv = '#' + id;
+    var dataId = $(idDiv).attr('data-id');
+    var dataNameNo = $(idDiv).attr('data-name-no');
+    var dataNameHave = $(idDiv).attr('data-name-have');
+    var idAdd = '#' + dataNameNo + dataId;
+    var idRemove = '#' + dataNameHave + dataId;
+    $(idAdd).removeClass('hidden_heart');
+    $(idRemove).addClass('hidden_heart');
+}
+
+// Xet top, right(margin) cho modal sản phẩm
+var topModalP = (heightAll - 600)/4 + 'px';
+var rightModalP = (widthAll - 900)/2 + 'px';
+// console.log(topModalP);
+$('.app_modal_product_content').css({'top' : topModalP, 'right' : rightModalP});
+
+
+// Radio sản phẩm phần xem nhanh
+
+function changeBorderColor(id){
+    // console.log(id);
+    var idColor = '#' + id;
+    // Lấy giá trị numberId sau phần product_color_
+    var numberId = id.slice(14);
+    // console.log(numberId);
+    $('.app_modal_product_color_list').css('border', '2px solid transparent');
+    $(idColor).css({'border' : '2px solid red'});
+    // Gán giá trị từ numberId đễ input radio check
+    // $('input:radio[name=colorID][value='+numberId+']').prop('checked',true);
+    $('[name=colorID]').val([numberId]);
+    // Lấy giá trị khi đã check
+    var myRadio = $('input[name=colorID]:checked').val();
+    // console.log(myRadio);
+}
+    
+function hoverBorderColor(id){
+    // console.log(id);
+    var idHover = '#' + id;
+    var myRadioColor = $('input[name=colorID]:checked').val();
+    var idCheck = 'product_color_' + myRadioColor;
+    if(id == idCheck){
+        $(idHover).css({'border' : '2px solid red'});
+    }else{
+        $(idHover).css({'border' : '2px solid green'});
+    }
+}
+function outBorderColor(id){
+    var idHover = '#' + id;
+    var myRadioColor = $('input[name=colorID]:checked').val();
+    var idCheck = 'product_color_' + myRadioColor;
+    // console.log(idCheck);
+    if(id == idCheck){
+        $(idHover).css({'border' : '2px solid red'});
+    }else{
+        $(idHover).css({'border' : '2px solid transparent'});
+    }
+    
+}
+
+function changeBorderSize(id){
+    var idClick = '#' + id;
+    $('.app_modal_product_size_list').css({'border' : '2px solid transparent'});
+    $(idClick).css({'border' : '2px solid red'});
+    var numberSize = id.slice(13);
+    $('input:radio[name=sizeID][value='+numberSize+']').prop('checked','true');
+}
+function hoverBorderSize(id){
+    var idHover = '#' + id;
+    var myRadioSize = $('input[name=sizeID]:checked').val();
+    var idCheck = 'product_size_' + myRadioSize;
+    // console.log(id);
+    // console.log(idCheck);
+    if(id == idCheck){
+        $(idHover).css({'border' : '2px solid red'});
+    }else{
+        $(idHover).css({'border' : '2px solid green'});
+    }
+}
+function outBorderSize(id){
+    var idHover = '#' + id;
+    var myRadioSize = $('input[name=sizeID]:checked').val();
+    var idCheck = 'product_size_' + myRadioSize;
+    // console.log(id);
+    // console.log(idCheck);
+    if(id == idCheck){
+        $(idHover).css({'border' : '2px solid red'});
+    }else{
+        $(idHover).css({'border' : '2px solid transparent'});
+    }
+}
+// Khóa màn hình khi hiển thị modal sản phẩm
+function checkboxProduct(id){
+    if(document.getElementById('input_checkbox_product').checked ==true){
+        $(document.body).css('overflow','hidden');
+    }else{
+        $('body').css('overflow', '');
+    }
 }
