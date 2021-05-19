@@ -1,9 +1,4 @@
-// thay đổi background phần header 
-$(".header_navbar_list").hover(function(){
-    $(".header").css("background", "black");
-}, function(){
-    $(".header").css("background", "linear-gradient(#25211e, rgba(37,33,30,0))");
-});
+
 
 // Check phần cart, nếu checkcart đã check thì khóa màn hình body
 // function checkedCart(){
@@ -21,29 +16,6 @@ $('.header_navbar_item_product_modal').width(widthAll);
 var x = $(".header_navbar_item_product").offset().left;
 document.getElementById("item_product").style.left = -x+"px";
 
-//// Xét khi người dùng scroll, phần menu navbar sẽ fixx
-var checkScrool = false;
-window.addEventListener('scroll', function(ev) {
-
-    var someDiv = document.getElementById('abc');
-    var distanceToTop = someDiv.getBoundingClientRect().top;
-    // console.log(distanceToTop);
-    
-    if(distanceToTop <= -42 && checkScrool == false || distanceToTop <= 44 && checkScrool == true){
-        checkScrool = true;
-        var x1 = -45;
-        // $(".header_topbar").css({"background" : "black", "height" : '50px', "z-index" : 4});
-        $(".header_topbar").css({"height" : '50px', "z-index" : 4});
-
-        $(".header_navbar").css({"position" : "fixed", "padding-top" : 12+'px', "z-index" : 5});
-        // $(".header_topbar").css({"position" : "fixed", "z-index" : 1});
-        $(".header_hidden").css({"display" : "block"});
-    }else if(distanceToTop == 50 || distanceToTop == 0){
-        $(".header_topbar").css({"background" : "", "height" : '', "z-index" : 5});
-        $(".header_navbar").css({"position" : "relative","padding-top" : '55px', "z-index" : 4});
-        $(".header_hidden").css({"display" : "none"});
-    }
- });
 
  // Xét ở phần search, khi user nhập vào thì cho phần search toàn màn hình
 $(".app_modal_search_input").on('input', function(e){
@@ -110,37 +82,42 @@ $('.app_modal_product_content').css({'top' : topModalP, 'right' : rightModalP});
 
 // Radio sản phẩm phần xem nhanh
 
-function changeBorderColor(id){
+function modalChangeBorderColor(id){
     // console.log(id);
     var idColor = '#' + id;
+    var dataId = $(idColor).attr('data-id');
+    var dataName = $(idColor).attr('data-name');
     // Lấy giá trị numberId sau phần product_color_
-    var numberId = id.slice(14);
     // console.log(numberId);
     $('.app_modal_product_color_list').css('border', '2px solid transparent');
     $(idColor).css({'border' : '2px solid red'});
     // Gán giá trị từ numberId đễ input radio check
     // $('input:radio[name=colorID][value='+numberId+']').prop('checked',true);
-    $('[name=colorID]').val([numberId]);
+    $('[name=modalColorID]').val([dataId]);
     // Lấy giá trị khi đã check
-    var myRadio = $('input[name=colorID]:checked').val();
+    var myRadio = $('input[name=modalColorID]:checked').val();
     // console.log(myRadio);
 }
     
-function hoverBorderColor(id){
+function modalHoverBorderColor(id){
     // console.log(id);
     var idHover = '#' + id;
-    var myRadioColor = $('input[name=colorID]:checked').val();
-    var idCheck = 'product_color_' + myRadioColor;
+    var dataId = $(idHover).attr('data-id');
+    var dataName = $(idHover).attr('data-name');
+    var myRadioColor = $('input[name=modalColorID]:checked').val();
+    var idCheck = dataName + myRadioColor;
     if(id == idCheck){
         $(idHover).css({'border' : '2px solid red'});
     }else{
         $(idHover).css({'border' : '2px solid green'});
     }
 }
-function outBorderColor(id){
+function modalOutBorderColor(id){
     var idHover = '#' + id;
-    var myRadioColor = $('input[name=colorID]:checked').val();
-    var idCheck = 'product_color_' + myRadioColor;
+    var dataId = $(idHover).attr('data-id');
+    var dataName = $(idHover).attr('data-name');
+    var myRadioColor = $('input[name=modalColorID]:checked').val();
+    var idCheck = dataName + myRadioColor;
     // console.log(idCheck);
     if(id == idCheck){
         $(idHover).css({'border' : '2px solid red'});
@@ -150,17 +127,20 @@ function outBorderColor(id){
     
 }
 
-function changeBorderSize(id){
+function modalChangeBorderSize(id){
     var idClick = '#' + id;
+    var dataId = $(idClick).attr('data-id');
+    var dataName = $(idClick).attr('data-name');
     $('.app_modal_product_size_list').css({'border' : '2px solid transparent'});
     $(idClick).css({'border' : '2px solid red'});
-    var numberSize = id.slice(13);
-    $('input:radio[name=sizeID][value='+numberSize+']').prop('checked','true');
+    $('input:radio[name=modalSizeID][value='+dataId+']').prop('checked','true');
 }
-function hoverBorderSize(id){
+function modalHoverBorderSize(id){
     var idHover = '#' + id;
-    var myRadioSize = $('input[name=sizeID]:checked').val();
-    var idCheck = 'product_size_' + myRadioSize;
+    var dataId = $(idHover).attr('data-id');
+    var dataName = $(idHover).attr('data-name');
+    var myRadioSize = $('input[name=modalSizeID]:checked').val();
+    var idCheck = dataName + myRadioSize;
     // console.log(id);
     // console.log(idCheck);
     if(id == idCheck){
@@ -169,10 +149,12 @@ function hoverBorderSize(id){
         $(idHover).css({'border' : '2px solid green'});
     }
 }
-function outBorderSize(id){
+function modalOutBorderSize(id){
     var idHover = '#' + id;
-    var myRadioSize = $('input[name=sizeID]:checked').val();
-    var idCheck = 'product_size_' + myRadioSize;
+    var dataId = $(idHover).attr('data-id');
+    var dataName = $(idHover).attr('data-name');
+    var myRadioSize = $('input[name=modalSizeID]:checked').val();
+    var idCheck = dataName + myRadioSize;
     // console.log(id);
     // console.log(idCheck);
     if(id == idCheck){
@@ -181,6 +163,39 @@ function outBorderSize(id){
         $(idHover).css({'border' : '2px solid transparent'});
     }
 }
+// Tăng qty
+function modalPlusQty(){
+    // Lấy giá trị hiện tại của modalQty
+    var valueQty = parseInt(document.getElementById('modalQty').value);
+    // console.log(valueQty);
+    var newValue = valueQty+1;
+    // console.log(newValue);
+    $('#modalQty').val(newValue);
+}
+function modalMinusQty(){
+    var valueQty = parseInt(document.getElementById('modalQty').value);
+    console.log(valueQty);
+    var newValue;
+    if(valueQty === 1){
+        newValue = 1;
+    }else{
+        newValue = valueQty-1;
+    }
+    // console.log(newValue);
+    $('#modalQty').val(newValue);
+}
+function modalInputQty(){
+    var valueInput = document.getElementById('modalQty').value;
+    if(isNaN(parseInt(valueInput))){
+        // console.log('Nhập sai')
+        $('#modalQty').val(1);
+    }else{
+        // console.log('Nhập đúng');
+        $('#modalQty').val(parseInt(valueInput));
+    }
+    // console.log(p);
+}
+
 // Khóa màn hình khi hiển thị modal sản phẩm
 function checkboxProduct(id){
     if(document.getElementById('input_checkbox_product').checked ==true){
@@ -189,3 +204,4 @@ function checkboxProduct(id){
         $('body').css('overflow', '');
     }
 }
+

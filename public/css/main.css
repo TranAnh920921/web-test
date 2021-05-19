@@ -27,7 +27,7 @@ html{
     box-sizing: border-box;
 }
 .app{
-    height: 1000px;
+    /* height: 1000px; */
     /* background: rgb(187, 164, 164); */
     position: relative;
 }
@@ -226,7 +226,7 @@ html{
     /* position: fixed; */
     position: absolute;
     top: 0;
-    z-index: 1;
+    /* z-index: 1; */
 }
 .header_navbar_list{
     display: flex;
@@ -346,7 +346,7 @@ html{
     float: left;
 }
 .app_footer{
-    padding: 0 var(--padding-dt) !important;
+    /* padding: 0 var(--padding-dt) !important; */
 }
 .app_footer_sectionInfo{
     margin-bottom: var(--margin-bottom-dt);
@@ -423,9 +423,11 @@ html{
     color: #1877f2;
 }
 .app_footer_contactInfo{
-    margin-left: var(--padding-dt-minus);
-    margin-right: var(--padding-dt-minus);
-    padding: 30px var(--padding-dt) 0 var(--padding-dt);
+    /* margin-left: var(--padding-dt-minus);
+    margin-right: var(--padding-dt-minus); */
+    /* padding: 30px var(--padding-dt) 0 var(--padding-dt); */
+    padding: 30px 0 0 0;
+
     background: rgb(241,241,241);
 }
 .app_footer_contactInfo_title{
@@ -647,13 +649,10 @@ html{
     left: 0;
     right: 0;
     background: #333333;
-    z-index: 10;
     padding: 17px 100px 0 100px;
-    
     opacity: 0;
-    transform: translateY(-100%);
+    transform: translateY(-400%);
     transition: opacity linear 0.5s, transform linear 0.5s;
-    z-index: 0;
 }
 .app_modal_search_top{
     display: flex;
@@ -739,7 +738,6 @@ html{
     margin-top: -30px;
     padding: 20px 20px;
     box-shadow: 0 0px 3.125rem 0 rgba(0,0,0,.2);
-    z-index: 0;
 }
 .app_modal_search_product_list{
     display: flex;
@@ -799,7 +797,7 @@ html{
     top: 0;
     right: 0;
     bottom: 0;
-    z-index: 10;
+    
     padding: 50px 15px;
     font-size: 1.4rem;
     line-height: 1.4rem;
@@ -812,6 +810,7 @@ html{
 .checkbox__cart:checked ~ .shopping_cart{
     opacity: 1;
     transform: translateX(0%);
+    z-index: 10;
 }
 .checkbox__cart:checked ~ .app_modal_over{
     display: block;
@@ -952,7 +951,6 @@ html{
     bottom: 0;
     right: 0;
     left: 0;
-    z-index: 0;
     
 }
 .app_modal_product_content{
@@ -1075,10 +1073,36 @@ html{
     border: 2px solid transparent;
     padding: 0px 2px;
     user-select: none;
+    position: relative;
 }
 .app_modal_product_color_list:hover{
     border: 2px solid green;
     cursor: pointer;
+}
+.app_modal_product_color_list:hover .app_modal_product_color_list_title{
+    display: block;
+}
+.app_modal_product_color_list:hover:before{
+    /* display: none; */
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: calc(50% - 5px);
+    border-width: 10px 5px 0px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+    z-index: 10;
+}
+.app_modal_product_color_list_title{
+    display: none;
+    position: absolute;
+    padding: 4px 10px;
+    bottom: calc(100% + 15px);
+    background: black;
+    text-align: center;
+    color: var(--white-color);
+    left: -5px;
+    border-radius: 15px;
 }
 .app_modal_product_color_list:last-child{
     margin-right: 0;
@@ -1112,7 +1136,7 @@ html{
     font-size: 1.1rem;
     font-weight: 400;
     color: #787878;
-    padding: 5px 10px;
+    padding: 5px 10px !important;
     border: 1px solid var(--black-color);
 }
 .app_modal_product_size_radio_input{
@@ -1124,6 +1148,46 @@ html{
 .app_modal_product_soldout{
     opacity: 0.5;
 }
+/* Qty */
+.app_modal_product_number{
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+.app_modal_product_number_btn{
+    display: inline-block;
+    /* padding: 5px 11px 6px 11px; */
+    font-size: 2rem;
+    line-height: 2rem;
+    background: var(--white-color);
+    color: var(--black-color);
+    border: 1px solid #ccc;
+    width: 40px;
+    height: 40px;
+
+}
+.app_modal_product_number_qty{
+    display: inline-block;
+    font-size: 2rem;
+    color: var(--black-color);
+    width: 80px;
+    height: 40px;
+    outline: none;
+    margin-left: -3px;
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    margin-top: -2px;
+    margin-right: -2px;
+}
+.app_modal_product_number_qty:hover{
+    cursor: pointer;
+}
+
+
+/* Submit */
 .app_modal_product_button{
     margin-top: 30px;
 }

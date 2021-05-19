@@ -1,7 +1,9 @@
 /* CONTAINER */
 
 .app_container{
-    padding: 50px var(--padding-dt) !important;
+    /* padding: 50px var(--padding-dt) !important; */
+    padding: 50px 0 !important;
+
 }
 .app_container_title_link{
     font-size: 30px;
@@ -14,7 +16,9 @@
     color: var(--black-color);
 }
 .app_container_heading{
-    padding: 20px 20px;
+    /* padding: 20px 20px; */
+    padding: 20px 0px;
+
 }
 
 /* Set đồ của tuần */
