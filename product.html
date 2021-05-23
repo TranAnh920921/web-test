@@ -14,12 +14,12 @@
     <!-- css trang -->
     <link rel="stylesheet" href="./public/css/main.css">
     <link rel="stylesheet" href="./public/css/product.css">
+    <link rel="stylesheet" href="./public/css/reponsive_main.css">
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
     <!-- Font ngoài -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <!-- Carousel -->
     <link rel="stylesheet" href="./public/OwlCarousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="./public/OwlCarousel/dist/assets/owl.theme.default.min.css">
@@ -30,7 +30,8 @@
             <div class="container-fluid header_topbar">
                 <ul class="header_topbar_list header_topbar_list_left">
                     <li class="header_topbar_item">
-                        <i class="fa fa-phone header_topbar-icon" aria-hidden="true"></i>
+                        <!-- <i class="fa fa-phone header_topbar-icon" aria-hidden="true"></i> -->
+                        <i class="fas fa-phone-alt header_topbar-icon"></i>
                         <span class="header_topbar_item_phone">
                             0355123450
                         </span>
@@ -45,7 +46,7 @@
                         
                     </li>
                     <li class="header_topbar_item header_topbar_item_cart" title="Giỏ hàng">
-                        <label for="input_checkbox__cart"   onclick="checkedCart()">
+                        <label for="input_checkbox__cart"  onclick="modalCheckboxCart()">
                             <i class="fa fa-shopping-cart header_topbar-icon " aria-hidden="true"></i>
                             <span class="header_topbar_item_cart_number">3</span>
                         </label>
@@ -58,9 +59,12 @@
                     </li> -->
                     <!-- Nếu đã đăng nhập -->
                     <li class="header_topbar_item header_topbar_account">
-                        <a href="" class="header_topbar_user">
+                        <div class="header_topbar_user">
                             <img src="./public/images/avatar.jpg" alt="" class="header_topbar_item_avatar">
-                        </a>
+                        </div>
+                        <!-- <a href="" class="header_topbar_user">
+                            <img src="./public/images/avatar.jpg" alt="" class="header_topbar_item_avatar">
+                        </a> -->
                         <div class="header_topbar_user_menu">
                             <ul class="header_topbar_user_list">
                                 <li class="header_topbar_user_item">
@@ -78,6 +82,12 @@
                             </ul>
                         </div>
                     </li>
+                    <li class="header_topbar_item header_topbar_bars"  title="Danh mục">
+                        <label for="app_modal_category_input">
+                            <i class="fas fa-bars header_topbar-icon"></i>
+                        </label>
+                        
+                    </li>
                 </ul>
             </div>
             <!-- <div class="container-fluid header_navbar app_header_navbar" id="header_navbar"> -->
@@ -85,7 +95,7 @@
 
                 <ul class="header_navbar_list">
                     <li class="header_navbar_item">
-                        <a href="#" class="header_navbar_item_kw">Trang chủ</a>
+                        <a href="./index.html" class="header_navbar_item_kw">Trang chủ</a>
                     </li>
                     <li class="header_navbar_item header_navbar_item_product">
                         <span class="header_navbar_item_kw">Sản phẩm</span>
@@ -140,7 +150,7 @@
                         <span class="header_navbar_item_kw">Bộ sưu tập</span>
                     </li>
                     <li class="header_navbar_item header_navbar_item_logo">
-                        <a href=""><img src="./public/images/logo-typo.png" alt=""></a>
+                        <a href="./index.html"><img src="./public/images/logo-typo.png" alt=""></a>
                     </li>
                     <li class="header_navbar_item">
                         <a href="" class="header_navbar_item_kw"><span>Tin tức</span></a>
@@ -153,10 +163,6 @@
                     </li>
                 </ul>
             </div>
-            <div class="header_hidden"></div>
-            <div class="abc" id="abc" style="color: white;z-index: 1;"></div>
-            
-            <!-- Search sản phẩm-->
             
         </header>
         <!-- END HEADER -->
@@ -348,13 +354,13 @@
                             </form>
                             <!-- Thông tin thêm -->
                             <div class="accordion" id="accordionExample">
-                                <div class="accordion-item">
-                                  <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                <div class="accordion-item accordion-item_product">
+                                  <h2 class="accordion-header" id="headingOne_product">
+                                    <button class="accordion-button accordion-button_product collapsed collapsed_product" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                       CHI TIẾT SẢN PHẨM
                                     </button>
                                   </h2>
-                                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne_product" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                       <!-- Content -->
                                         <div class="product_info_content">
@@ -405,25 +411,25 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="accordion-item">
-                                  <h2 class="accordion-header" id="headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <div class="accordion-item accordion-item_product">
+                                  <h2 class="accordion-header" id="headingTwo_product">
+                                    <button class="accordion-button accordion-button_product collapsed collapsed_product" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                       GỢI Ý PHỐI ĐỒ
                                     </button>
                                   </h2>
-                                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo_product" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                       <!-- Content -->
                                     </div>
                                   </div>
                                 </div>
-                                <div class="accordion-item">
-                                  <h2 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <div class="accordion-item accordion-item_product">
+                                  <h2 class="accordion-header" id="headingThree_product">
+                                    <button class="accordion-button accordion-button_product collapsed collapsed_product" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                       GIAO HÀNG VÀ TRẢ HÀNG
                                     </button>
                                   </h2>
-                                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree_product" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                       <!-- Content -->
                                         <div class="product_info_shipping">
@@ -467,13 +473,13 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingFour">
-                                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <div class="accordion-item accordion-item_product">
+                                    <h2 class="accordion-header" id="headingFour_product">
+                                      <button class="accordion-button accordion-button_product collapsed collapsed_product" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                         CHẤT LIỆU VÀ CHĂM SÓC
                                       </button>
                                     </h2>
-                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour_product" data-bs-parent="#accordionExample">
                                       <div class="accordion-body">
                                         <!-- Content -->
                                       </div>
@@ -657,7 +663,7 @@
                                     <!-- Yêu thích -->
                                     <div class="product_item_favourite">
                                         <!-- Chưa yêu thích -->
-                                        <span class="product_item_favourite_link"><span class="ti-heart product_item_favourite_noheart" data-id="2" data-name-no="related_noFavourite_" data-name-have="related_haveFavourite_" id="related_noFavourite_2" onclick="addFavourite(this.id)"></span></span>
+                                        <span class="product_item_favourite_link"><span class="ti-heart product_item_favourite_noheart" data-id="4" data-name-no="related_noFavourite_" data-name-have="related_haveFavourite_" id="related_noFavourite_4" onclick="addFavourite(this.id)"></span></span>
                                         <!-- <span class="product_item_favourite_link"><i class="far fa-heart product_item_favourite_heart" aria-hidden="true" id="Favourite_1" onclick="Favourite(this.id)"></i></span> -->
                                         <!-- Đã yêu thích -->
                                         <span class="product_item_favourite_link"><i class="fas fa-heart product_item_favourite_heart hidden_heart" aria-hidden="true" data-id="4" data-name-no="related_noFavourite_" data-name-have="related_haveFavourite_" id="related_haveFavourite_4" onclick="removeFavourite(this.id)"></i></span>
@@ -836,17 +842,22 @@
         </footer>
         <!-- END FOOTER -->
 
+        
+        
+    </div>
+    <!-- END APP -->
+
         <!-- modal Cart -->
         <div class="app_modal_cart" >
             <!-- <div class="app_modal_over"></div> -->
-            <input type="checkbox" name="" class="checkbox__cart" id="input_checkbox__cart" style="display: none;">
-            <label for="input_checkbox__cart" class="app_modal_over" id="app_modal_over"   onclick="checkedCart()"></label>
+            <input type="checkbox" name="input_checkbox__cart" class="checkbox__cart" id="input_checkbox__cart" style="display: none;">
+            <label for="input_checkbox__cart" class="app_modal_over" id="app_modal_over" onclick="modalCheckboxCart()"></label>
             
             <div class="shopping_cart">
                 <div class="shopping_cart_top">
                     <div class="">GIỎ HÀNG</div>
                     <div>
-                        <label for="input_checkbox__cart" class="ti-close shopping_cart_top_icon"  onclick="checkedCart()"></label>
+                        <label for="input_checkbox__cart" class="ti-close shopping_cart_top_icon" onclick="modalCheckboxCart()"></label>
                     </div>
                 </div>
                 <span class="">Bạn đang  có <span style="font-weight: 800;font-family: 'Quicksand',sans-serif;font-size: 1.6rem;">0</span> sản phẩm trong giỏ hàng</span>
@@ -964,7 +975,7 @@
                         <a href="./seach.html" class="app_modal_search_product_list_content_name">Quần lót boxer kidman DBX008</a>
                         <span class="app_modal_search_product_list_content_price">79,000</span>
                     </div>
-                   
+                
                 </div>
                 <hr>
                 <div class="app_modal_search_product_list">
@@ -975,7 +986,7 @@
                         <a href="./seach.html" class="app_modal_search_product_list_content_name">Quần lót boxer kidman DBX008</a>
                         <span class="app_modal_search_product_list_content_price">79,000</span>
                     </div>
-                   
+                
                 </div>
             </div>
         </div>
@@ -997,16 +1008,16 @@
                     <div class="app_modal_product_content_b carousel-inner">
                         <div class="carousel-item active">
                             <img src="./public/images/product/product_small/p1.jpg" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
+                        </div>
+                        <div class="carousel-item">
                             <img src="./public/images/product/product_small/p2.jpg" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
+                        </div>
+                        <div class="carousel-item">
                             <img src="./public/images/product/product_small/p3.jpg" class="d-block w-100" alt="...">
-                          </div>
-                          <div class="carousel-item">
+                        </div>
+                        <div class="carousel-item">
                             <img src="./public/images/product/product_small/p4.jpg" class="d-block w-100" alt="...">
-                          </div>
+                        </div>
                     </div>
                     <div class="app_modal_product_content_r">
                         <label for="input_checkbox_product" class="app_modal_product_content_r_close"  onclick="checkboxProduct(this.id)">
@@ -1125,9 +1136,206 @@
             </div>
             
         </div>
-    </div>
-
-
+    
+        <!-- Modal danh mục -->
+    
+        <div class="app_modal_category">
+            <input type="checkbox" name="" id="app_modal_category_input" class="app_modal_category_input" hidden>
+            <label for="app_modal_category_input" class="app_modal_category_overlay"></label>
+            <div class="app_modal_category_content">
+                <div class="app_modal_category_content_title">
+                    <div class="app_modal_category_content_title_text">
+                        Menu
+                    </div>
+                    <label for="app_modal_category_input" class="app_modal_category_content_title_icon">
+                        <span class="ti-close"></span>
+                    </label>
+                </div>
+                <div class="app_modal_category_container">
+                    <div class="app_modal_category_content_list">
+                        <a href="./index.html" class="app_modal_category_content_link">Trang chủ</a>
+                    </div>
+                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button accordion-button_modal collapsed app_modal_category_content_list" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                            Sản phẩm
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                            <!-- Content -->
+                            <!-- Có list sau -->
+                            <ul class="app_modal_category_ul">
+                                <li class="app_modal_category_hasChildren">
+                                    <div class="app_modal_category_hasChildren_content">Áo</div>
+                                    <div class="app_modal_category_hasChildren_next" id="modalCategory_Ao" data-id="Ao" data-name="modalCategory_" onclick="hasChildrenCategory(this.id)">
+                                        <div class=""><span class="ti-angle-right"></span></div>
+                                    </div>
+                                </li>
+                                <li class="app_modal_category_hasChildren">
+                                    <div class="app_modal_category_hasChildren_content">Quần</div>
+                                    <div class="app_modal_category_hasChildren_next" id="modalCategory_Quan" data-id="Quan" data-name="modalCategory_" onclick="hasChildrenCategory(this.id)">
+                                        <div class=""><span class="ti-angle-right"></span></div>
+                                    </div>
+                                </li>
+                                <li class="app_modal_category_hasChildren">
+                                    <div class="app_modal_category_hasChildren_content">Đồ lót</div>
+                                    <div class="app_modal_category_hasChildren_next">
+                                        <div class=""><span class="ti-angle-right"></span></div>
+                                    </div>
+                                </li>
+                                <li class="app_modal_category_hasChildren">
+                                    <div class="app_modal_category_hasChildren_content">Combo</div>
+                                    <div class="app_modal_category_hasChildren_next">
+                                        <div class=""><span class="ti-angle-right"></span></div>
+                                    </div>
+                                </li>
+                                <li class="app_modal_category_hasChildren">
+                                    <div class="app_modal_category_hasChildren_content">Phụ kiện</div>
+                                    <div class="app_modal_category_hasChildren_next">
+                                        <div class=""><span class="ti-angle-right"></span></div>
+                                    </div>
+                                </li>
+                                <li class="app_modal_category_hasChildren">
+                                    <div class="app_modal_category_hasChildren_content">Kidman</div>
+                                    <div class="app_modal_category_hasChildren_next">
+                                        <div class=""><span class="ti-angle-right"></span></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        </div>
+                        <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed app_modal_category_content_list" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                            Bộ sưu tập
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                            <ul class="app_modal_category_ul">
+                                <li class="app_modal_category_hasChildren">
+                                    <div class="app_modal_category_hasChildren_content">Xuân hè</div>
+                                    <div class="app_modal_category_hasChildren_next">
+                                        <div class=""><span class="ti-angle-right"></span></div>
+                                    </div>
+                                </li>
+                                <li class="app_modal_category_hasChildren">
+                                    <div class="app_modal_category_hasChildren_content">Thu đông</div>
+                                    <div class="app_modal_category_hasChildren_next">
+                                        <div class=""><span class="ti-angle-right"></span></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        </div>
+                        <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingThree">
+                            <button class="accordion-button collapsed app_modal_category_content_list" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                            Đồng phục
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                            <ul class="app_modal_category_ul">
+                                <li class="app_modal_category_hasChildren">
+                                    <div class="app_modal_category_hasChildren_content">Nam công sở</div>
+                                </li>
+                                <li class="app_modal_category_hasChildren">
+                                    <div class="app_modal_category_hasChildren_content">Nữ công sở</div>
+                                </li>
+                                <li class="app_modal_category_hasChildren">
+                                    <div class="app_modal_category_hasChildren_content">Bảo hộ lao động</div>
+                                </li>
+                                <li class="app_modal_category_hasChildren">
+                                    <div class="app_modal_category_hasChildren_content">Thể thao</div>
+                                </li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Liên hệ</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="modal_children">
+            <input type="checkbox" name="app_modal_category_children_input" id="app_modal_category_children_input" class="app_modal_category_children_input" hidden>
+            <label for="app_modal_category_children_input" class="app_modal_category_chidren_overlay"  onclick="modalChildrenCategory()"></label>
+            <!-- Children áo -->
+            <div class="app_modal_category_children" id="modalCategoryChildren_Ao" data-name="modalCategoryChildren_">
+                <div class="app_modal_category_children_title">
+                    <div class="app_modal_category_children_title_icon"  onclick="backModalCategory()">
+                        <span class="ti-angle-left"></span>
+                    </div>
+                    <div class="app_modal_category_children_title_text">
+                        ÁO
+                    </div>
+                    <div class="app_modal_category_children_title_icon" onclick="modalChildrenCategory()">
+                        <span class="ti-close"></span>
+                    </div>
+                </div>
+                <div class="app_modal_category_container">
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Áo sơ mi</a>
+                    </div>
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Áo polo</a>
+                    </div>
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Áo T-Shirt</a>
+                    </div>
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Áo Tank-top</a>
+                    </div>
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Áo len</a>
+                    </div>
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Áo khoác</a>
+                    </div>
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Áo thun dài tay</a>
+                    </div>
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Áo plazer</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Children Quần -->
+            <div class="app_modal_category_children" id="modalCategoryChildren_Quan" data-name="modalCategoryChildren_">
+                <div class="app_modal_category_children_title">
+                    <div class="app_modal_category_children_title_icon"  onclick="backModalCategory()">
+                        <span class="ti-angle-left"></span>
+                    </div>
+                    <div class="app_modal_category_children_title_text">
+                        Quần
+                    </div>
+                    <div class="app_modal_category_children_title_icon" onclick="modalChildrenCategory()">
+                        <span class="ti-close"></span>
+                    </div>
+                </div>
+                <div class="app_modal_category_container">
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Quần âu</a>
+                    </div>
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Quần kaki</a>
+                    </div>
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Quần thể thao</a>
+                    </div>
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Quần jeans</a>
+                    </div>
+                    <div class="app_modal_category_content_list">
+                        <a href="" class="app_modal_category_content_link">Quần short</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    
 </body>
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

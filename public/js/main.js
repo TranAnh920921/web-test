@@ -1,5 +1,5 @@
-
-
+var widthAll = screen.width;
+// console.log(widthAll);
 // Check phần cart, nếu checkcart đã check thì khóa màn hình body
 // function checkedCart(){
 //     if(document.getElementById('input_checkbox__cart').checked ==true){
@@ -9,6 +9,10 @@
 //     }
 // }
 // Xét độ rộng màn hình để xử lý phần hover navbar sản phẩm 
+var blackNav = false;
+
+
+
 var widthAll = screen.width;
 var heightAll = screen.height;
 // console.log(widthAll);
@@ -16,16 +20,34 @@ $('.header_navbar_item_product_modal').width(widthAll);
 var x = $(".header_navbar_item_product").offset().left;
 document.getElementById("item_product").style.left = -x+"px";
 
+// Khi thay đổi kích thước màn hình
+window.onresize = function(event) {
+    widthAll = screen.width;
+    heightAll = screen.height;
+    // console.log(widthAll);
+    $('.header_navbar_item_product_modal').width(widthAll);
+    x = $(".header_navbar_item_product").offset().left;
+    document.getElementById("item_product").style.left = -x+"px";
+};
 
  // Xét ở phần search, khi user nhập vào thì cho phần search toàn màn hình
 $(".app_modal_search_input").on('input', function(e){
     // $('.app_modal_search').css({'height' : '100%'});
     var count = e.target.value.length;
-    if(count == 0){
-        $('.app_modal_search').css({'height' : '100px'});
+    if(widthAll >= 1023){
+        if(count == 0){
+            $('.app_modal_search').css({'height' : '100px'});
+        }else{
+            $('.app_modal_search').css({'height' : '100%'});
+        }
     }else{
-        $('.app_modal_search').css({'height' : '100%'});
+        if(count == 0){
+            $('.app_modal_search').css({'height' : '60px'});
+        }else{
+            $('.app_modal_search').css({'height' : '100%'});
+        }
     }
+    
 });
 
 // Hover vào sản phẩm thêm phần border,
@@ -205,3 +227,67 @@ function checkboxProduct(id){
     }
 }
 
+// Modal checkcart
+function modalCheckboxCart(){
+    // var checkCart = $('input:checkbox[name=input_checkbox__cart]').is(':checked');
+    var checkCart = $('#input_checkbox__cart').is(':checked');
+
+    if(checkCart == true){
+        // console.log('chưa check');
+        $('.app').css('transform','');
+        $('.container-fluid').css('top','0');
+        $('.header_topbar_list_left').css('top','0');
+        $('.header_topbar_list_right').css('top','0');
+    }else{
+        // console.log('Đã check');
+        if(widthAll > 1023){
+            $('.app').css('transform','translateX(-400px)');
+        }else if(widthAll <= 1023 && widthAll >= 600){
+            // var pxWidth = '-' + widthAll + 'px';
+            $('.app').css('transform','translateX(-320px)');
+        }else{
+            $('.app').css('transform','translateX(-280px)');
+        }
+        
+        $('.container-fluid').css('top','-20px');
+        $('.header_topbar_list_left').css('top','-20px');
+        $('.header_topbar_list_right').css('top','-20px');
+    }
+    // console.log(checkCart);
+}
+
+// Modal danh mục
+function hasChildrenCategory(id){
+    var idCate = '#' + id;
+    var idData = $(idCate).attr('data-id');
+    var nameData = $(idCate).attr('data-name');
+    // console.log(idData);
+    var idTarget = '#' + 'modalCategoryChildren_' + idData;
+    // console.log(idTarget);
+    // Đóng thẻ menu
+    // $('.app_modal_category_content').css({'transform' : 'translateX(330px)', 'opacity' : 0});
+    document.getElementById('app_modal_category_input').checked = false;
+
+    // Mở thẻ con
+    
+    $('.app_modal_category_chidren_overlay').css({'display' : 'block', 'z-index' : 10});
+    $(idTarget).css({'transform' : 'translateX(0)', 'opacity' : 1, 'z-index' : 10});
+    document.getElementById('app_modal_category_children_input').checked = true;
+}
+function modalChildrenCategory(){
+    var ischeckChil = $('input:checkbox[name=app_modal_category_children_input]').is(':checked');
+    // console.log(ischeckChil);
+    if(ischeckChil == true){
+        document.getElementById('app_modal_category_children_input').checked = false;
+        $('.app_modal_category_children').css({'transform' : 'translateX(300px)', 'opacity' : 0, 'z-index' : 0});
+        $('.app_modal_category_chidren_overlay').css({'display' : 'none', 'z-index' : 0});
+    }else{
+        console.log('...');
+    }
+}
+function backModalCategory(){
+    document.getElementById('app_modal_category_children_input').checked = false;
+    $('.app_modal_category_children').css({'transform' : 'translateX(300px)', 'opacity' : 0, 'z-index' : 0});
+    $('.app_modal_category_chidren_overlay').css({'display' : 'none', 'z-index' : 0});
+    document.getElementById('app_modal_category_input').checked = true;
+}

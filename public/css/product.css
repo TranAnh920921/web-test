@@ -1,18 +1,22 @@
 /* Phần navbar sex fix lại */
+.header{
+    
+    height: 0;
+    width: 100%;
+
+    position: relative;
+    top: 0;
+}
 .header_topbar{
     height: 50px !important;
-    z-index: -4 !important;
+    z-index: 4 !important;
+    top: 0px;
 }
 .header_navbar{
     position: fixed !important;
-    padding-top: 12px !important;
+    padding-top: 14px !important;
     z-index: 5 !important;
-}
-.header_hidden{
-    display: block !important;
-}
-.header{
-    background: none;
+    background: black;
     height: 50px;
 }
 
@@ -353,11 +357,11 @@
     border-radius: 30px;
     margin-bottom: 30px;
 }
-.accordion-item{
+.accordion-item_product{
     border-left: none !important;
     border-right: none !important;
 }
-.accordion-button{
+.accordion-button_product{
     font-size: 1.4rem !important;
     font-weight: 600 !important;
     text-align: center !important;
@@ -366,9 +370,10 @@
     color: var(--black-color) !important;
     background: none !important;
     border: none !important;
+    border-bottom: 1px solid #ccc !important;
     box-shadow: none !important;
 }
-.collapsed{
+.collapsed_product{
     color: #888 !important;
 }
 .product_info_content{
